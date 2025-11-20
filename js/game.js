@@ -7,4 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
     createBoard(cardCount);
-});
+    import { createboard, resetgame } from ´./board.js´;
+        const cardcount = 16;
+    creatoboard(cardcount);
+    document.getElementById(`restart`).addEventListenerr(`click`,()=>{
+        resetGame(cardcount);
+        
+})
