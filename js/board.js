@@ -63,4 +63,10 @@ function unflipCards() {
 
 function resetBoard() {
     [firstCard, secondCard, lockBoard] = [null, null, false];
+export function resetgame(cardcount) {
+    gameboard.innerHTML = "";
+    firstcard = null;
+    secondcard = null;
+    lockboard = null;
+    createboard(cardCount);
 }
