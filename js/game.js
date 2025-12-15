@@ -1,16 +1,21 @@
-import { createBoard } from './board.js';
+import { createBoard, resetGame } from "./board.js";
 
-document.addEventListener('DOMContentLoaded', () => {
-    const cardCount = parseInt(prompt("Syötä korttien määrä (parillinen luku):"), 10);
-    if (cardCount % 2 !== 0) {
+document.addEventListener("DOMContentLoaded", () => {
+    let cardCount = parseInt(
+        prompt("Syötä korttien määrä (parillinen luku):"),
+        10
+    );
+
+    if (isNaN(cardCount) || cardCount % 2 !== 0) {
         alert("Korttien määrän täytyy olla parillinen luku.");
         return;
     }
+
     createBoard(cardCount);
-    import { createboard, resetgame } from ´./board.js´;
-        const cardcount = 16;
-    creatoboard(cardcount);
-    document.getElementById(`restart`).addEventListenerr(`click`,()=>{
-        resetGame(cardcount);
-        
-})
+
+    const restartBtn = document.getElementById("restart");
+    restartBtn.addEventListener("click", () => {
+        resetGame(cardCount);
+    });
+});
+
