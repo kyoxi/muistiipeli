@@ -13,7 +13,6 @@ let lockBoard = false;
 let matchedPairs = 0;
 let totalPairs = 0;
 
-/* 🔀 Oikea shuffle */
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -32,20 +31,16 @@ export function createBoard(cardCount) {
 
     cards.forEach(symbol => {
         const cardElement = createCardElement(symbol);
-        cardElement.addEventListener("click", () => {
-            flipCard(cardElement);
-            handleCardFlip(cardElement);
-        });
+        cardElement.addEventListener("click", () => handleCardFlip(cardElement));
         gameBoard.appendChild(cardElement);
     });
 }
 
 function handleCardFlip(cardElement) {
-    if (lockBoard) return;         
-    if (cardElement === firstCard) return;  
+    if (lockBoard) return;
+    if (cardElement === firstCard) return;
 
-    cardElement.classList.add("flipped");
-    cardElement.textContent = cardElement.dataset.card;
+    flipCard(cardElement);
 
     if (!firstCard) {
         firstCard = cardElement;
@@ -53,7 +48,8 @@ function handleCardFlip(cardElement) {
     }
 
     secondCard = cardElement;
-    lockBoard = true;  
+    lockBoard = true; 
+
     checkForMatch();
 }
 
@@ -64,12 +60,10 @@ function checkForMatch() {
 
 function disableCards() {
     matchedPairs++;
-    resetTurn(); 
+    resetTurn();
 
     if (matchedPairs === totalPairs) {
-        setTimeout(() => {
-            alert("🎉 Voitit pelin!");
-        }, 300);
+        setTimeout(() => alert("🎉 Voitit pelin!"), 300);
     }
 }
 
