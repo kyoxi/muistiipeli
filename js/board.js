@@ -53,7 +53,7 @@ function handleCardFlip(cardElement) {
     }
 
     secondCard = cardElement;
-    lockBoard = true;  // 🔒 estää kolmannen kortin kääntämisen
+    lockBoard = true;  
     checkForMatch();
 }
 
