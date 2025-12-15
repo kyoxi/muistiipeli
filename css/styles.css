@@ -1,40 +1,50 @@
-
 body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
     background: linear-gradient(135deg, #89f7fe, #66a6ff);
-    color: #333;
 }
 
-h1 {
-    margin-top: 20px;
-    font-size: 3rem;
-    color: #fff;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 15px;
+    max-width: 500px;
+    margin: 20px auto;
 }
 
-#restart {
-    margin: 15px;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    border: none;
+
+.card {
+    width: 100%;
+    padding-top: 100%; 
+    position: relative;
+    background: linear-gradient(135deg, #ffe066, #ff6b6b);
     border-radius: 12px;
-    background: #ffb347;
-    background: linear-gradient(45deg, #ffb347, #ffcc33);
-    color: #fff;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: all 0.2s ease;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 1;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent; 
 }
 
-#restart:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+
+.card.flipped {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, #74c0fc, #1c7ed6);
+    color: #fff; 
 }
+
+
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #ccc;
+    border-radius: 12px;
+    backface-visibility: hidden;
+}
+
 
 
