@@ -33,18 +33,16 @@ export function createBoard(cardCount) {
     cards.forEach(symbol => {
         const cardElement = createCardElement(symbol);
         cardElement.addEventListener("click", () => {
-    flipCard(cardElement);
-    handleCardFlip(cardElement);
-});
-
-      
+            flipCard(cardElement);
+            handleCardFlip(cardElement);
+        });
         gameBoard.appendChild(cardElement);
     });
 }
 
 function handleCardFlip(cardElement) {
-    if (lockBoard) return;
-    if (cardElement === firstCard) return;
+    if (lockBoard) return;         
+    if (cardElement === firstCard) return;  
 
     cardElement.classList.add("flipped");
     cardElement.textContent = cardElement.dataset.card;
@@ -55,19 +53,18 @@ function handleCardFlip(cardElement) {
     }
 
     secondCard = cardElement;
+    lockBoard = true;  // 🔒 estää kolmannen kortin kääntämisen
     checkForMatch();
 }
 
 function checkForMatch() {
-    const isMatch =
-        firstCard.dataset.card === secondCard.dataset.card;
-
+    const isMatch = firstCard.dataset.card === secondCard.dataset.card;
     isMatch ? disableCards() : unflipCards();
 }
 
 function disableCards() {
     matchedPairs++;
-    resetTurn();
+    resetTurn(); 
 
     if (matchedPairs === totalPairs) {
         setTimeout(() => {
@@ -77,8 +74,6 @@ function disableCards() {
 }
 
 function unflipCards() {
-    lockBoard = true;
-
     setTimeout(() => {
         firstCard.classList.remove("flipped");
         secondCard.classList.remove("flipped");
