@@ -32,8 +32,11 @@ export function createBoard(cardCount) {
 
     cards.forEach(symbol => {
         const cardElement = createCardElement(symbol);
-        cardElement.addEventListener("click", () =>
-            flipCard(cardElement, handleCardFlip)
+        cardElement.addEventListener("click", () => {
+    flipCard(cardElement);
+    handleCardFlip(cardElement);
+});
+
         );
         gameBoard.appendChild(cardElement);
     });
