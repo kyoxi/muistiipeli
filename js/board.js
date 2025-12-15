@@ -37,7 +37,7 @@ export function createBoard(cardCount) {
     handleCardFlip(cardElement);
 });
 
-        );
+      
         gameBoard.appendChild(cardElement);
     });
 }
